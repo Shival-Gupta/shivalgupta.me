@@ -1,7 +1,13 @@
+"use client"
+
 import Link from "next/link"
 import { Github, Linkedin, Mail, Phone } from "lucide-react"
 import { contact } from "@/data/resume"
 
+/**
+ * Footer - Static footer without page transition animations
+ * Removed all motion animations to prevent reload jitter on page change
+ */
 export function Footer() {
   const currentYear = new Date().getFullYear()
 
@@ -27,9 +33,9 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <Link href="/" className="inline-flex items-center gap-2 font-mono text-lg font-semibold group">
-              <span className="text-primary transition-transform group-hover:scale-110">{"<"}</span>
+              <span className="text-primary transition-transform duration-200 group-hover:scale-110">{"<"}</span>
               <span>{contact.name.split(" ")[0]}</span>
-              <span className="text-primary transition-transform group-hover:scale-110">{"/>"}</span>
+              <span className="text-primary transition-transform duration-200 group-hover:scale-110">{"/>"}</span>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Building intelligent systems at the intersection of AI, Robotics, IoT, and Extended Reality.
@@ -44,7 +50,7 @@ export function Footer() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors w-fit hover:translate-x-1 transform duration-200"
+                  className="text-sm text-muted-foreground hover:text-primary hover:translate-x-1 transition-all w-fit"
                 >
                   {link.label}
                 </Link>
@@ -62,7 +68,7 @@ export function Footer() {
                   href={link.href}
                   target={link.href.startsWith("http") ? "_blank" : undefined}
                   rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted text-muted-foreground hover:bg-primary hover:text-primary-foreground hover:scale-110 transition-all"
+                  className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-200 hover:scale-105"
                   aria-label={link.label}
                 >
                   <link.icon className="h-4 w-4" />
@@ -76,7 +82,7 @@ export function Footer() {
         {/* Copyright */}
         <div className="mt-12 pt-6 border-t border-border/40 text-center text-sm text-muted-foreground">
           <p>
-            © {currentYear} {contact.name}. All rights reserved.
+            &copy; {currentYear} {contact.name}. All rights reserved.
           </p>
         </div>
       </div>

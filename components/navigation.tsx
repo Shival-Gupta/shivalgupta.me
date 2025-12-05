@@ -23,6 +23,10 @@ const socialLinks = [
   { href: `mailto:${contact.email}`, icon: Mail, label: "Email" },
 ]
 
+/**
+ * Navigation - Static header without page transition animations
+ * Removed all motion animations from nav/header to prevent reload on page change
+ */
 export function Navigation() {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
@@ -30,11 +34,11 @@ export function Navigation() {
   return (
     <header className="fixed top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
       <nav className="container mx-auto flex h-16 items-center justify-between px-4 lg:px-8">
-        {/* Logo */}
+        {/* Logo - simple CSS hover */}
         <Link href="/" className="flex items-center gap-2 font-mono text-lg font-semibold tracking-tight group">
-          <span className="text-primary transition-transform group-hover:scale-110">{"<"}</span>
+          <span className="text-primary transition-transform duration-200 group-hover:scale-110">{"<"}</span>
           <span>SG</span>
-          <span className="text-primary transition-transform group-hover:scale-110">{"/>"}</span>
+          <span className="text-primary transition-transform duration-200 group-hover:scale-110">{"/>"}</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -44,7 +48,7 @@ export function Navigation() {
               key={link.href}
               href={link.href}
               className={cn(
-                "px-4 py-2 text-sm font-medium transition-colors hover:text-primary relative",
+                "relative px-4 py-2 text-sm font-medium transition-colors hover:text-primary",
                 pathname === link.href ? "text-primary" : "text-muted-foreground",
               )}
             >
@@ -63,14 +67,13 @@ export function Navigation() {
               variant="ghost"
               size="icon"
               asChild
-              className="h-9 w-9 text-muted-foreground hover:text-primary"
+              className="h-9 w-9 text-muted-foreground hover:text-primary transition-colors"
             >
               <a href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link.label}>
                 <link.icon className="h-4 w-4" />
               </a>
             </Button>
           ))}
-          {/* Theme toggle in header */}
           <div className="ml-2 pl-2 border-l border-border">
             <ThemeToggle />
           </div>
@@ -94,7 +97,7 @@ export function Navigation() {
                       href={link.href}
                       onClick={() => setIsOpen(false)}
                       className={cn(
-                        "px-4 py-3 text-lg font-medium transition-colors hover:bg-muted rounded-lg",
+                        "px-4 py-3 text-lg font-medium transition-colors hover:bg-muted rounded-lg block",
                         pathname === link.href ? "text-primary bg-muted" : "text-foreground",
                       )}
                     >

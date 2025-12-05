@@ -1,5 +1,5 @@
 "use client"
-
+import { useRef } from "react"
 import { Download, Briefcase, GraduationCap, Code, Music, Camera, Activity, Video, Award } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -13,18 +13,29 @@ const activityIcons: Record<string, typeof Music> = {
   video: Video,
 }
 
+/**
+ * AboutContent - Timeline and skills with smooth GSAP scroll animations
+ * Simplified animations - removed blur/clip effects, using simple opacity + y transforms
+ */
 export function AboutContent() {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const headerRef = useRef<HTMLDivElement>(null)
+  const experienceRef = useRef<HTMLDivElement>(null)
+  const educationRef = useRef<HTMLDivElement>(null)
+  const skillsRef = useRef<HTMLDivElement>(null)
+  const interestsRef = useRef<HTMLDivElement>(null)
+
   return (
-    <section className="pt-24 pb-16">
+    <section className="pt-24 pb-16" ref={containerRef}>
       <div className="container mx-auto px-4 lg:px-8">
         {/* Header */}
-        <div className="max-w-3xl mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
+        <div className="max-w-3xl mb-16" ref={headerRef}>
           <h1 className="text-3xl md:text-4xl font-bold mb-4 text-balance">About Me</h1>
           <p className="text-muted-foreground text-lg leading-relaxed mb-6 text-pretty">
             I'm a passionate developer specializing in AI, Robotics, IoT, and Extended Reality. With a B.Tech in
             Computer Science from VIT Chennai, I love building systems that bridge the physical and digital worlds.
           </p>
-          <Button asChild className="glow-primary-hover transition-all">
+          <Button asChild className="hover:scale-[1.02] transition-transform">
             <a href="/resume.pdf" download>
               <Download className="mr-2 h-4 w-4" />
               Download Resume
@@ -36,19 +47,18 @@ export function AboutContent() {
           {/* Main content */}
           <div className="lg:col-span-2 space-y-12">
             {/* Experience Timeline */}
-            <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
+            <div ref={experienceRef}>
               <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
                 <Briefcase className="h-5 w-5 text-primary" />
                 Experience
               </h2>
               <div className="space-y-6">
-                {experience.map((exp, index) => (
+                {experience.map((exp) => (
                   <div
                     key={exp.id}
                     className="relative pl-8 pb-6 border-l-2 border-border last:border-transparent group hover:border-primary/50 transition-colors"
                   >
-                    <div className="absolute left-[-9px] top-0 h-4 w-4 rounded-full bg-primary border-4 border-background group-hover:scale-125 transition-transform" />
-
+                    <div className="absolute left-[-9px] top-0 h-4 w-4 rounded-full bg-primary border-4 border-background group-hover:scale-110 transition-transform" />
                     <div className="space-y-2">
                       <div className="flex flex-wrap items-center justify-between gap-2">
                         <h3 className="font-semibold group-hover:text-primary transition-colors">{exp.role}</h3>
@@ -79,7 +89,7 @@ export function AboutContent() {
             </div>
 
             {/* Education Timeline */}
-            <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
+            <div ref={educationRef}>
               <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
                 <GraduationCap className="h-5 w-5 text-primary" />
                 Education
@@ -90,8 +100,7 @@ export function AboutContent() {
                     key={edu.id}
                     className="relative pl-8 pb-6 border-l-2 border-border last:border-transparent group hover:border-primary/50 transition-colors"
                   >
-                    <div className="absolute left-[-9px] top-0 h-4 w-4 rounded-full bg-primary border-4 border-background group-hover:scale-125 transition-transform" />
-
+                    <div className="absolute left-[-9px] top-0 h-4 w-4 rounded-full bg-primary border-4 border-background group-hover:scale-110 transition-transform" />
                     <div className="space-y-1">
                       <div className="flex flex-wrap items-center justify-between gap-2">
                         <h3 className="font-semibold group-hover:text-primary transition-colors">{edu.degree}</h3>
@@ -113,7 +122,10 @@ export function AboutContent() {
 
           {/* Sidebar */}
           <div className="space-y-8">
-            <Card className="bg-card/50 card-hover animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
+            <Card
+              ref={skillsRef}
+              className="bg-card/50 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
+            >
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Code className="h-5 w-5 text-primary" />
@@ -141,7 +153,10 @@ export function AboutContent() {
             </Card>
 
             {/* Interests card */}
-            <Card className="bg-card/50 card-hover animate-in fade-in slide-in-from-bottom-4 duration-700 delay-400">
+            <Card
+              ref={interestsRef}
+              className="bg-card/50 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
+            >
               <CardHeader>
                 <CardTitle>Beyond Code</CardTitle>
               </CardHeader>

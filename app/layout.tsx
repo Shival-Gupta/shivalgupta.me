@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
+import { CursorGlow } from "@/components/cursor-glow"
 import { siteMetadata, contact } from "@/data/resume"
 import "./globals.css"
 
@@ -80,6 +81,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+          <CursorGlow />
           {children}
         </ThemeProvider>
         <Analytics />

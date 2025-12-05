@@ -10,6 +10,7 @@ export const metadata: Metadata = {
 
 /**
  * Privacy policy page
+ * Removed AnimatedSection wrapper - content visible immediately
  */
 export default function PrivacyPage() {
   return (

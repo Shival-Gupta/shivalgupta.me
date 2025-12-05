@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 
 /**
  * Projects page with filterable grid
+ * Removed AnimatedSection wrapper - content visible immediately
  */
 export default function ProjectsPage() {
   return (
@@ -19,7 +20,6 @@ export default function ProjectsPage() {
       <Navigation />
       <section className="pt-24 pb-16">
         <div className="container mx-auto px-4 lg:px-8">
-          {/* Header */}
           <div className="max-w-2xl mb-12">
             <h1 className="text-3xl md:text-4xl font-bold mb-4">Projects</h1>
             <p className="text-muted-foreground text-lg leading-relaxed">
@@ -28,7 +28,6 @@ export default function ProjectsPage() {
             </p>
           </div>
 
-          {/* Projects Grid */}
           <ProjectsGrid projects={projects} />
         </div>
       </section>

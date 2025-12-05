@@ -36,6 +36,10 @@ interface ProjectsGridProps {
   projects: Project[]
 }
 
+/**
+ * ProjectsGrid - Filterable project cards
+ * Removed GSAP animations - using CSS transitions only for instant loading
+ */
 export function ProjectsGrid({ projects }: ProjectsGridProps) {
   const [activeFilter, setActiveFilter] = useState<string>("all")
 
@@ -43,6 +47,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
 
   return (
     <div className="space-y-8">
+      {/* Filter buttons - always visible */}
       <div className="flex flex-wrap gap-2">
         {categories.map((cat) => {
           const Icon = cat.icon
@@ -52,11 +57,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
               variant={activeFilter === cat.id ? "default" : "outline"}
               size="sm"
               onClick={() => setActiveFilter(cat.id)}
-              className={cn(
-                "gap-2 transition-all",
-                activeFilter === cat.id && "glow-primary",
-                activeFilter !== cat.id && "hover:border-primary/50",
-              )}
+              className={cn("gap-2 transition-all duration-200", activeFilter !== cat.id && "hover:border-primary/50")}
             >
               <Icon className="h-4 w-4" />
               {cat.label}
@@ -65,15 +66,10 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
         })}
       </div>
 
+      {/* Project grid - CSS transitions only */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {filteredProjects.map((project, index) => (
-          <div
-            key={project.id}
-            className="animate-in fade-in slide-in-from-bottom-4"
-            style={{ animationDelay: `${index * 100}ms` }}
-          >
-            <ProjectCard project={project} />
-          </div>
+        {filteredProjects.map((project) => (
+          <ProjectCard key={project.id} project={project} />
         ))}
       </div>
 
@@ -86,7 +82,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <Card className="group flex flex-col h-full bg-card/50 border-border/50 card-hover hover-lift">
+    <Card className="group flex flex-col h-full bg-card/50 border-border/50 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1">
       <CardHeader className="space-y-3">
         <div className="flex items-center justify-between">
           <Badge variant="outline" className={cn("capitalize", categoryColors[project.category])}>
