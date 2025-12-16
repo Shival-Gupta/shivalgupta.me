@@ -36,7 +36,7 @@ export function AboutContent() {
             Computer Science from VIT Chennai, I love building systems that bridge the physical and digital worlds.
           </p>
           <Button asChild className="hover:scale-[1.02] transition-transform">
-            <a href="/resume.pdf" download>
+            <a href="https://resume.shivalgupta.me/" download>
               <Download className="mr-2 h-4 w-4" />
               Download Resume
             </a>

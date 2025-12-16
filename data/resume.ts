@@ -253,6 +253,6 @@ export const heroContent = {
     "I craft autonomous robots, immersive VR experiences, and intelligent IoT systems. Fresh B.Tech graduate from VIT Chennai, specializing in AI and Robotics.",
   cta: {
     primary: { text: "View Projects", href: "/projects" },
-    secondary: { text: "Download Resume", href: "/resume.pdf" },
+    secondary: { text: "Download Resume", href: "https://resume.shivalgupta.me/" },
   },
 }
