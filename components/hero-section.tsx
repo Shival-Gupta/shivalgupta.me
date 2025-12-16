@@ -9,7 +9,7 @@ import { heroContent, skills } from "@/data/resume"
 
 const HeroCanvas = dynamic(() => import("@/components/hero-canvas").then((mod) => mod.HeroCanvas), {
   ssr: false,
-  loading: () => <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent" />,
+  loading: () => <div className="absolute inset-0 bg-linear-to-b from-primary/5 to-transparent" />,
 })
 
 /**
