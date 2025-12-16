@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Github, ExternalLink, Play, Award, Bot, Cpu, Wifi, Glasses, Globe } from "lucide-react"
+import { Github, ExternalLink, Play, Award, Bot, Cpu, Wifi, Glasses, Globe, Gamepad2, Terminal, LayoutGrid } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -14,40 +14,46 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { cn } from "@/lib/utils"
-import type { Project } from "@/data/resume"
+import type { Project, ProjectCategory } from "@/data/resume"
 
+// 2. UPDATED: Sorted & Fixed Icons
 const categories = [
-  { id: "all", label: "All", icon: Globe },
+  { id: "all", label: "All", icon: LayoutGrid },
   { id: "ai", label: "AI", icon: Cpu },
   { id: "robotics", label: "Robotics", icon: Bot },
   { id: "iot", label: "IoT", icon: Wifi },
+  { id: "web", label: "Web", icon: Globe },
+  { id: "systems", label: "Systems", icon: Terminal },
   { id: "xr", label: "XR", icon: Glasses },
+  { id: "games", label: "Games", icon: Gamepad2 },
 ] as const
 
-const categoryColors: Record<Project["category"], string> = {
+// 2. UPDATED: Added Systems Color
+const categoryColors: Record<ProjectCategory, string> = {
   ai: "bg-blue-500/10 text-blue-400 border-blue-500/20",
   robotics: "bg-orange-500/10 text-orange-400 border-orange-500/20",
   iot: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
   xr: "bg-primary/10 text-primary border-primary/20",
   web: "bg-cyan-500/10 text-cyan-400 border-cyan-500/20",
+  games: "bg-purple-500/10 text-purple-400 border-purple-500/20",
+  systems: "bg-zinc-500/10 text-zinc-400 border-zinc-500/20", // <--- New Color
 }
 
 interface ProjectsGridProps {
   projects: Project[]
 }
 
-/**
- * ProjectsGrid - Filterable project cards
- * Removed GSAP animations - using CSS transitions only for instant loading
- */
 export function ProjectsGrid({ projects }: ProjectsGridProps) {
   const [activeFilter, setActiveFilter] = useState<string>("all")
 
-  const filteredProjects = activeFilter === "all" ? projects : projects.filter((p) => p.category === activeFilter)
+  // Filter projects if category array includes the selected filter
+  const filteredProjects = activeFilter === "all" 
+    ? projects 
+    : projects.filter((p) => p.categories.includes(activeFilter as ProjectCategory))
 
   return (
     <div className="space-y-8">
-      {/* Filter buttons - always visible */}
+      {/* Filter buttons */}
       <div className="flex flex-wrap gap-2">
         {categories.map((cat) => {
           const Icon = cat.icon
@@ -66,7 +72,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
         })}
       </div>
 
-      {/* Project grid - CSS transitions only */}
+      {/* Project grid */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {filteredProjects.map((project) => (
           <ProjectCard key={project.id} project={project} />
@@ -84,11 +90,20 @@ function ProjectCard({ project }: { project: Project }) {
   return (
     <Card className="group flex flex-col h-full bg-card/50 border-border/50 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1">
       <CardHeader className="space-y-3">
-        <div className="flex items-center justify-between">
-          <Badge variant="outline" className={cn("capitalize", categoryColors[project.category])}>
-            {project.category}
-          </Badge>
-          <span className="text-xs text-muted-foreground font-mono">{project.dateRange}</span>
+        <div className="flex flex-col gap-2">
+          {/* Header Row: Date */}
+          <div className="flex justify-between items-start">
+             <span className="text-xs text-muted-foreground font-mono mt-1">{project.dateRange}</span>
+          </div>
+          
+          {/* Categories Row */}
+          <div className="flex flex-wrap gap-2">
+            {project.categories.map((cat) => (
+              <Badge key={cat} variant="outline" className={cn("capitalize", categoryColors[cat])}>
+                {cat}
+              </Badge>
+            ))}
+          </div>
         </div>
 
         <div>

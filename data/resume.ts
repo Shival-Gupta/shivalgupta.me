@@ -17,6 +17,7 @@ export interface Skill {
   category: string
   items: string[]
 }
+export type ProjectCategory = "ai" | "iot" | "robotics" | "xr" | "games" | "web" | "systems"
 
 export interface Project {
   id: string
@@ -30,7 +31,7 @@ export interface Project {
   demoUrl?: string
   videoUrl?: string
   featured?: boolean
-  category: "ai" | "robotics" | "iot" | "xr" | "web"
+  categories: ProjectCategory[]
 }
 
 export interface Experience {
@@ -107,7 +108,7 @@ export const projects: Project[] = [
     ],
     technologies: ["Jetson Nano", "ROS", "Arduino", "Python", "C++"],
     featured: true,
-    category: "robotics",
+    categories: ["ai", "iot", "robotics"],
   },
   {
     id: "smart-home-automation",
@@ -122,7 +123,36 @@ export const projects: Project[] = [
     technologies: ["Unity", "crewAI", "WebSockets", "Next.js"],
     certificateUrl: "#",
     featured: true,
-    category: "iot",
+    categories: ["ai", "iot", "web"],
+  },
+  {
+    id: "healthcare-platform",
+    title: "Enterprise Healthcare Platform",
+    subtitle: "Full Stack Management System",
+    dateRange: "Dec 2024",
+    description: [
+      "Architected a Dockerized healthcare platform with separate portals for Admins, Patients, and Providers.",
+      "Designed a scalable backend using TypeScript to handle modular production-ready deployments.",
+      "Implemented secure role-based authentication and database management.",
+    ],
+    technologies: ["TypeScript", "Docker", "PostgreSQL", "Node.js"], 
+    githubUrl: "https://github.com/Shival-Gupta/healthcare",
+    featured: false,
+    categories: ["web", "systems"], // <--- Updated to include "systems"
+  },
+  {
+    id: "drones-sim-suite",
+    title: "Drone Simulation Suite",
+    subtitle: "Automated Robotics Environment",
+    dateRange: "Dec 2024",
+    description: [
+      "Created an automated framework provisioning PX4, ArduPilot, and Gazebo for drone SITL testing.",
+      "Integrated MAVROS and QGroundControl for rapid UAV development on Ubuntu/WSL.",
+    ],
+    technologies: ["Shell", "Gazebo", "PX4", "ROS"],
+    githubUrl: "https://github.com/Shival-Gupta/drones-workshop",
+    featured: false,
+    categories: ["ai", "robotics"],
   },
   {
     id: "samsung-store-xr",
@@ -136,7 +166,35 @@ export const projects: Project[] = [
     technologies: ["Unity", "OpenXR", "Blender"],
     certificateUrl: "#",
     featured: true,
-    category: "xr",
+    categories: ["xr"],
+  },
+  {
+    id: "doofus-adventure",
+    title: "Doofus Adventure",
+    subtitle: "3D Survival Platformer",
+    dateRange: "2024",
+    description: [
+      "Built a 3D survival game in Unity where players navigate dynamically disappearing platforms.",
+      "Implemented procedural generation algorithms for randomized platform timing and placement.",
+      "Developed custom visual effects using ShaderLab and handled physics-based movement in C#.",
+    ],
+    technologies: ["Unity", "C#", "ShaderLab", "HLSL"],
+    githubUrl: "https://github.com/Shival-Gupta/Doofus-Adventure-Game",
+    featured: false,
+    categories: ["games"], 
+  },
+  {
+    id: "fps-shooter",
+    title: "FPS Shooter Game",
+    subtitle: "CS:GO Style Prototype",
+    dateRange: "Dec 2024",
+    description: [
+      "Developed a first-person shooter mechanic with raycast shooting and enemy AI.",
+      "Implemented custom shaders in ShaderLab for visual effects.",
+    ],
+    technologies: ["Unity", "C#", "ShaderLab"],
+    githubUrl: "https://github.com/Shival-Gupta/FPS-Shooter-Game",
+    categories: ["games"],
   },
 ]
 
