@@ -28,7 +28,6 @@ const categories = [
   { id: "games", label: "Games", icon: Gamepad2 },
 ] as const
 
-// 2. UPDATED: Added Systems Color
 const categoryColors: Record<ProjectCategory, string> = {
   ai: "bg-blue-500/10 text-blue-400 border-blue-500/20",
   robotics: "bg-orange-500/10 text-orange-400 border-orange-500/20",
@@ -36,7 +35,7 @@ const categoryColors: Record<ProjectCategory, string> = {
   xr: "bg-primary/10 text-primary border-primary/20",
   web: "bg-cyan-500/10 text-cyan-400 border-cyan-500/20",
   games: "bg-purple-500/10 text-purple-400 border-purple-500/20",
-  systems: "bg-zinc-500/10 text-zinc-400 border-zinc-500/20", // <--- New Color
+  systems: "bg-zinc-500/10 text-zinc-400 border-zinc-500/20",
 }
 
 interface ProjectsGridProps {
@@ -57,6 +56,12 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
       <div className="flex flex-wrap gap-2">
         {categories.map((cat) => {
           const Icon = cat.icon
+          
+          // --- NEW: Calculate count for this category ---
+          const count = cat.id === "all" 
+            ? projects.length 
+            : projects.filter(p => p.categories.includes(cat.id as ProjectCategory)).length
+
           return (
             <Button
               key={cat.id}
@@ -67,6 +72,16 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
             >
               <Icon className="h-4 w-4" />
               {cat.label}
+              
+              {/* --- NEW: Display the count --- */}
+              <span className={cn(
+                "text-xs px-1 py-0.2 rounded-full tabular-nums", 
+                activeFilter === cat.id 
+                  ? "bg-primary-foreground/20 text-primary-foreground" 
+                  : "bg-muted text-muted-foreground"
+              )}>
+                {count}
+              </span>
             </Button>
           )
         })}

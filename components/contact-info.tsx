@@ -32,12 +32,6 @@ const socialLinks = [
     value: "shival-gupta",
     href: contact.linkedin,
   },
-  {
-    icon: Globe,
-    label: "Website",
-    value: "shivalgupta.me",
-    href: contact.website,
-  },
 ]
 
 export function ContactInfo() {
@@ -74,7 +68,7 @@ export function ContactInfo() {
       </div>
 
       {/* Location */}
-      <motion.div
+      {/* <motion.div
         className="p-6 rounded-lg bg-card/50 border border-border/50 hover:border-primary/30 transition-colors"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -90,7 +84,7 @@ export function ContactInfo() {
           <br />
           <span className="text-sm">Open to remote opportunities worldwide</span>
         </p>
-      </motion.div>
+      </motion.div> */}
     </div>
   )
 }

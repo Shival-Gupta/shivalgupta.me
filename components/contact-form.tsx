@@ -9,10 +9,6 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
-/**
- * ContactForm - Simple contact form
- * Removed Motion/Framer animations - using CSS transitions only
- */
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -20,9 +16,28 @@ export function ContactForm() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+
+    const formData = new FormData(e.currentTarget)
+    formData.append("access_key", "a134c1b4-1d47-4d1d-be1a-11017c553532")
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        setIsSubmitted(true)
+      } else {
+        console.error("Submission failed:", data)
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -51,6 +66,9 @@ export function ContactForm() {
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Spam protection: Hidden field */}
+              <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
+
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="name">Name</Label>

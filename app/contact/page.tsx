@@ -6,6 +6,7 @@ import { ContactForm } from "@/components/contact-form"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { contact } from "@/data/resume"
+import { ContactInfo } from "@/components/contact-info"
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -35,7 +36,8 @@ export default function ContactPage() {
             <ContactForm />
 
             {/* Contact Info - inlined */}
-            <div className="space-y-6">
+            <ContactInfo />
+            {/* <div className="space-y-6">
               <Card className="bg-card/50 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
                 <CardHeader>
                   <CardTitle>Contact Information</CardTitle>
@@ -110,7 +112,7 @@ export default function ContactPage() {
                   </div>
                 </CardContent>
               </Card>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

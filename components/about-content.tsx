@@ -61,7 +61,7 @@ export function AboutContent() {
                     <div className="absolute left-[-9px] top-0 h-4 w-4 rounded-full bg-primary border-4 border-background group-hover:scale-110 transition-transform" />
                     <div className="space-y-2">
                       <div className="flex flex-wrap items-center justify-between gap-2">
-                        <h3 className="font-semibold group-hover:text-primary transition-colors">{exp.role}</h3>
+                        <h3 className="font-semibold transition-all duration-500 group-hover:drop-shadow-[0_0_5px_currentColor]">{exp.role}</h3>
                         <span className="text-sm font-mono text-muted-foreground">{exp.dateRange}</span>
                       </div>
                       <p className="text-primary">
