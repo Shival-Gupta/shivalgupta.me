@@ -124,6 +124,10 @@ export const projects: Project[] = [
     certificateUrl: "#",
     featured: true,
     categories: ["ai", "iot", "web"],
+    githubUrl: "https://github.com/Shival-Gupta/SmartHome-AgenticAI-Simulation",
+    demoUrl: "https://projects.shivalgupta.me/SmartHome-AgenticAI-Simulation/",
+    videoUrl: "https://youtu.be/f703A_g5J04",
+    // videoUrl: "https://github.com/Shival-Gupta/SmartHome-AgenticAI-Simulation/raw/refs/heads/main/Demo_Screen_recording.mp4",
   },
   {
     id: "healthcare-platform",

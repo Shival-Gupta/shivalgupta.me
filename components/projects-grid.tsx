@@ -15,8 +15,8 @@ import {
 } from "@/components/ui/dialog"
 import { cn } from "@/lib/utils"
 import type { Project, ProjectCategory } from "@/data/resume"
+import { VideoPlayer } from "@/components/video-player"
 
-// 2. UPDATED: Sorted & Fixed Icons
 const categories = [
   { id: "all", label: "All", icon: LayoutGrid },
   { id: "ai", label: "AI", icon: Cpu },
@@ -57,7 +57,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
         {categories.map((cat) => {
           const Icon = cat.icon
           
-          // --- NEW: Calculate count for this category ---
+          // Calculate count for this category
           const count = cat.id === "all" 
             ? projects.length 
             : projects.filter(p => p.categories.includes(cat.id as ProjectCategory)).length
@@ -73,7 +73,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
               <Icon className="h-4 w-4" />
               {cat.label}
               
-              {/* --- NEW: Display the count --- */}
+              {/* Display the count */}
               <span className={cn(
                 "text-xs px-1 py-0.2 rounded-full tabular-nums", 
                 activeFilter === cat.id 
@@ -173,6 +173,7 @@ function ProjectCard({ project }: { project: Project }) {
           </Button>
         )}
 
+        {/* --- UPDATED: Video Logic with Helper Component --- */}
         {project.videoUrl && (
           <Dialog>
             <DialogTrigger asChild>
@@ -181,13 +182,16 @@ function ProjectCard({ project }: { project: Project }) {
                 Video
               </Button>
             </DialogTrigger>
-            <DialogContent className="max-w-4xl">
-              <DialogHeader>
-                <DialogTitle>{project.title}</DialogTitle>
+            
+            {/* Styled Modal for Video */}
+            <DialogContent className="sm:max-w-3xl p-0 overflow-hidden bg-background/95 backdrop-blur-xl border-border/50">
+              <DialogHeader className="px-6 pt-6 pb-2">
+                <DialogTitle className="text-xl">{project.title}</DialogTitle>
                 <DialogDescription>{project.subtitle}</DialogDescription>
               </DialogHeader>
-              <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-                <p className="text-muted-foreground">Video player placeholder</p>
+              
+              <div className="p-6 pt-2">
+                 <VideoPlayer src={project.videoUrl} title={project.title} />
               </div>
             </DialogContent>
           </Dialog>
