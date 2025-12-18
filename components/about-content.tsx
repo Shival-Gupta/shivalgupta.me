@@ -4,7 +4,7 @@ import { Download, Briefcase, GraduationCap, Code, Music, Camera, Activity, Vide
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { skills, experience, education, extracurriculars } from "@/data/resume"
+import { skills, experience, education, extracurriculars, heroContent } from "@/data/resume"
 
 const activityIcons: Record<string, typeof Music> = {
   music: Music,
@@ -36,7 +36,7 @@ export function AboutContent() {
             Computer Science from VIT Chennai, I love building systems that bridge the physical and digital worlds.
           </p>
           <Button asChild className="hover:scale-[1.02] transition-transform">
-            <a href="https://resume.shivalgupta.me/" download>
+            <a href={heroContent.cta.secondary.href} target="_blank" rel="noopener noreferrer" >
               <Download className="mr-2 h-4 w-4" />
               Download Resume
             </a>

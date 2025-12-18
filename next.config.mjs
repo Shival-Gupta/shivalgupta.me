@@ -4,11 +4,15 @@ const nextConfig = {
     'http://localhost:3000',
     'http://192.168.10.101:3000',
   ],
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  images: {
-    unoptimized: true,
+
+  async redirects() {
+    return [
+      {
+        source: '/resume',
+        destination: 'https://resume.shivalgupta.me',
+        permanent: true,
+      },
+    ]
   },
 }
 

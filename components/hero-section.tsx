@@ -79,7 +79,7 @@ export function HeroSection() {
               asChild
               className="hover:bg-primary/10 hover:scale-[1.02] transition-all bg-transparent"
             >
-              <a href={heroContent.cta.secondary.href} download>
+              <a href={heroContent.cta.secondary.href} target="_blank" rel="noopener noreferrer" >
                 <Download className="mr-2 h-4 w-4" />
                 {heroContent.cta.secondary.text}
               </a>
