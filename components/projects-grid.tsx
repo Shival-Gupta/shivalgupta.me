@@ -131,10 +131,19 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <Card className="group flex flex-col h-full bg-card/50 border-border/50 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-200 hover:-translate-y-1duration-200 hover:-translate-y-0.5">
+    <Card
+      className="
+        group flex flex-col h-full
+        bg-card/50 border-border/50
+        hover:border-primary/30
+        hover:shadow-lg hover:shadow-primary/5
+        transition-all duration-200
+        hover:-translate-y-0.5
+      "
+    >
       <CardHeader className="space-y-3">
         {/* Date */}
-        <span className="text-xs text-muted-foreground font-mono">
+        <span className="text-xs text-muted-foreground/70 font-mono">
           {project.dateRange}
         </span>
 
@@ -168,46 +177,44 @@ function ProjectCard({ project }: { project: Project }) {
 
               {project.certificateUrl && (
                 <a
-  href={project.certificateUrl}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="shrink-0 flex items-center gap-1"
->
-  <Badge
-    variant="outline"
-    className="
-      bg-yellow-600/10
-      text-yellow-500/90
-      border-yellow-500/20
-      text-xs
-    "
-  >
-    <Award className="h-3 w-3 mr-1" />
-    Certified
-  </Badge>
+                  href={project.certificateUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="shrink-0 flex items-center gap-1"
+                >
+                  <Badge
+                    variant="outline"
+                    className="
+                      bg-yellow-600/10
+                      text-yellow-500/90
+                      border-yellow-500/20
+                      text-xs
+                    "
+                  >
+                    <Award className="h-3 w-3 mr-1" />
+                    Certified
+                  </Badge>
 
-  {/* External link affordance (card-hover driven) */}
-  <span
-    className="
-      pointer-events-none
-      inline-flex items-center
-      opacity-0
-      translate-x-[-4px]
-      transition-[opacity,transform]
-      duration-200
-      ease-out
-      group-hover:opacity-100
-      group-hover:translate-x-0
-      group-focus-within:opacity-100
-      group-focus-within:translate-x-0
-      text-yellow-500/80
-    "
-  >
-    <ExternalLink className="h-3 w-3" />
-  </span>
-</a>
-
-
+                  {/* External link affordance */}
+                  <span
+                    className="
+                      pointer-events-none
+                      inline-flex items-center
+                      opacity-0
+                      translate-x-[-4px]
+                      transition-[opacity,transform]
+                      duration-200
+                      ease-out
+                      group-hover:opacity-100
+                      group-hover:translate-x-0
+                      group-focus-within:opacity-100
+                      group-focus-within:translate-x-0
+                      text-yellow-500/80
+                    "
+                  >
+                    <ExternalLink className="h-3 w-3" />
+                  </span>
+                </a>
               )}
             </div>
           )}
