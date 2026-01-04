@@ -224,8 +224,8 @@ function ProjectCard({ project }: { project: Project }) {
       <CardContent className="flex-1 space-y-4">
         <ul className="space-y-2 text-sm text-muted-foreground">
           {project.description.map((line, i) => (
-            <li key={i} className="flex gap-2">
-              <span className="text-primary mt-1.5">•</span>
+            <li key={i} className="flex items-start gap-2">
+              <span className="text-primary mt-[0.35rem]">•</span>
               <span>{line}</span>
             </li>
           ))}
