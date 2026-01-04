@@ -108,7 +108,12 @@ export const projects: Project[] = [
     ],
     technologies: ["Jetson Nano", "ROS", "Arduino", "Python", "C++"],
     featured: true,
+    githubUrl: "https://github.com/Shival-Gupta/jetbot-dashboard",
     categories: ["ai", "iot", "robotics"],
+
+    // demoUrl: "",
+    // videoUrl: "",
+    // certificateUrl: "",
   },
   {
     id: "smart-home-automation",
@@ -121,13 +126,32 @@ export const projects: Project[] = [
       "Interactive control dashboard for system monitoring and agent-based interaction.",
     ],
     technologies: ["Unity", "crewAI", "WebSockets", "Next.js"],
-    certificateUrl: "#",
+    certificateUrl:
+      "https://drive.google.com/file/d/1vIS_oU6KLQu_Cn1QFSKIymVa99qM6wlP/view?usp=drive_link",
     featured: true,
-    categories: ["ai", "iot", "web"],
     githubUrl: "https://github.com/Shival-Gupta/SmartHome-AgenticAI-Simulation",
     demoUrl: "https://projects.shivalgupta.me/SmartHome-AgenticAI-Simulation/",
     videoUrl: "https://youtu.be/f703A_g5J04",
-    // videoUrl: "https://github.com/Shival-Gupta/SmartHome-AgenticAI-Simulation/raw/refs/heads/main/Demo_Screen_recording.mp4",
+    categories: ["ai", "iot", "web"],
+  },
+  {
+    id: "samsung-store-xr",
+    title: "Samsung Store XR",
+    subtitle: "Samsung PRISM Challenge, Winner",
+    dateRange: "Feb 2024 – Jul 2024",
+    description: [
+      "Immersive VR store prototype for Meta Quest devices.",
+      "Teleportation mechanics, interactive product showcase, and virtual cart system.",
+    ],
+    technologies: ["Unity", "OpenXR", "Blender"],
+    certificateUrl:
+      "https://drive.google.com/file/d/19xeCrN3ycqXisyDDgIYeygRRVawMKOxu/view?usp=sharing",
+    featured: true,
+    githubUrl: "https://github.com/Shival-Gupta/SamsungStoreXR",
+    videoUrl: "https://youtu.be/dRyXjEF4_dA",
+    categories: ["xr"],
+
+    // demoUrl: "",
   },
   {
     id: "healthcare-platform",
@@ -139,10 +163,14 @@ export const projects: Project[] = [
       "Scalable TypeScript backend designed for modular, production-ready deployments.",
       "Secure role-based authentication and compliant database management system.",
     ],
-    technologies: ["TypeScript", "Docker", "PostgreSQL", "Node.js"], 
+    technologies: ["TypeScript", "Docker", "PostgreSQL", "Node.js"],
     githubUrl: "https://github.com/Shival-Gupta/healthcare",
     featured: false,
     categories: ["web", "systems"],
+
+    // demoUrl: "",
+    // videoUrl: "",
+    // certificateUrl: "",
   },
   {
     id: "drones-sim-suite",
@@ -155,22 +183,12 @@ export const projects: Project[] = [
     ],
     technologies: ["Shell", "Gazebo", "PX4", "ROS"],
     githubUrl: "https://github.com/Shival-Gupta/drones-workshop",
+    demoUrl: "https://projects.shivalgupta.me/drones-workshop/",
     featured: false,
     categories: ["ai", "robotics"],
-  },
-  {
-    id: "samsung-store-xr",
-    title: "Samsung Store XR",
-    subtitle: "Samsung PRISM Challenge, Winner",
-    dateRange: "Feb 2024 – Jul 2024",
-    description: [
-      "Immersive VR store prototype for Meta Quest devices.",
-      "Teleportation mechanics, interactive product showcase, and virtual cart system.",
-    ],
-    technologies: ["Unity", "OpenXR", "Blender"],
-    certificateUrl: "#",
-    featured: true,
-    categories: ["xr"],
+
+    // videoUrl: "",
+    // certificateUrl: "",
   },
   {
     id: "doofus-adventure",
@@ -182,11 +200,14 @@ export const projects: Project[] = [
       "Procedural generation algorithms for randomized platform timing and placement.",
       "Custom ShaderLab visual effects and physics-based movement logic.",
     ],
-    technologies: ["Unity", "C#", "ShaderLab", "HLSL"],
+    technologies: ["Unity", "C#", "ShaderLab", "Blender"],
     githubUrl: "https://github.com/Shival-Gupta/Doofus-Adventure-Game",
+    demoUrl: "https://github.com/Shival-Gupta/Doofus-Adventure-Game/releases",
     featured: false,
     categories: ["games"],
-    demoUrl: "https://github.com/Shival-Gupta/Doofus-Adventure-Game/releases",
+
+    // videoUrl: "",
+    // certificateUrl: "",
   },
   {
     id: "fps-shooter",
@@ -200,8 +221,13 @@ export const projects: Project[] = [
     technologies: ["Unity", "C#", "ShaderLab"],
     githubUrl: "https://github.com/Shival-Gupta/FPS-Shooter-Game",
     categories: ["games"],
+
+    // demoUrl: "",
+    // videoUrl: "",
+    // certificateUrl: "",
   },
 ]
+
 
 // ============================================
 // WORK EXPERIENCE
@@ -219,7 +245,7 @@ export const experience: Experience[] = [
       "Implemented missile trajectory modeling and Google Earth–style tools.",
       "Helped hosting OpenProject (OpenSource Jira alternative) on Azure.",
     ],
-    certificateUrl: "#",
+    certificateUrl: "https://drive.google.com/file/d/1bNjF0U-Ky607ieK9sgrpSHBlJc7LPmNN/view?usp=drive_link",
   },
   {
     id: "airtel",
@@ -233,7 +259,7 @@ export const experience: Experience[] = [
       "Implemented Next.js + Prisma + PostgreSQL stack with encryption.",
       "Integrated third-party auth (Clerk.js) and modern UI (Tailwind + shadcn).",
     ],
-    certificateUrl: "#",
+    certificateUrl: "https://drive.google.com/file/d/1zCj8CKZbHcKEj6LS8N3VzG33aIENUIZA/view?usp=drive_link",
   },
 ]
 
