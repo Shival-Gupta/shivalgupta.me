@@ -111,8 +111,8 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/Shival-Gupta/jetbot-dashboard",
     categories: ["ai", "iot", "robotics"],
 
+    videoUrl: "https://youtu.be/4BlFpX9_cDw",
     // demoUrl: "",
-    // videoUrl: "",
     // certificateUrl: "",
   },
   {
